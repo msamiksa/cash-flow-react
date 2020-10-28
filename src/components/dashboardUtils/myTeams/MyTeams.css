@@ -1,0 +1,15 @@
+.my-teams-container {
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 80%;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-gap: 40px;
+  text-align: left;
+}
+
+.my-teams-container-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+}

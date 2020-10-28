@@ -1,0 +1,11 @@
+.cover-image {
+  position: absolute;
+  left: 60%;
+  top: 18%;
+  z-index: 200;
+}
+
+.cover-image img {
+  width: 500px;
+  height: 80vh;
+}

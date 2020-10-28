@@ -1,0 +1,53 @@
+@font-face {
+  font-family: Roboto;
+  src: url('./assets/Roboto/Roboto-Regular.ttf');
+}
+@font-face {
+  font-family: Quicksand;
+  src: url('./assets/Quicksand/static/Quicksand-Regular.ttf');
+}
+body,
+html {
+  height: 100vh;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.App,
+#root {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+.first {
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  position: relative;
+}
+
+.second {
+  height: 100%;
+  width: 100%;
+  background-color: #065cd0;
+  position: relative;
+}
+
+.third {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  position: relative;
+}
+
+.fourth {
+  height: 100%;
+  width: 100%;
+  background-color: #065cd0;
+  position: relative;
+}
+h1 {
+  padding: 0;
+  margin: 0;
+}
