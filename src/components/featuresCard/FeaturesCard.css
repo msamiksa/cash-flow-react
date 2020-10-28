@@ -1,0 +1,15 @@
+.features-card .card-heading {
+  font-size: 1.2em;
+  color: #3e4e4d;
+  font-family: Roboto;
+  font-weight: 700;
+  text-shadow: 2px 2px 5px #efeff5;
+}
+
+.features-card .card-text {
+  margin-top: 10px;
+  font-size: 1.05em;
+  color: #3e4e4d;
+  font-family: Roboto;
+  line-height: 1.5;
+}

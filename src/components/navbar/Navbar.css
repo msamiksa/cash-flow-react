@@ -1,0 +1,52 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 999;
+  font-family: Roboto;
+  font-weight: 400;
+}
+
+.nav-left {
+  position: absolute;
+  top: 50%;
+  left: 60px;
+  transform: translateY(-50%);
+  width: fit-content;
+}
+
+.nav-left .Mui-disabled {
+  background-color: #3661b3;
+}
+
+.nav-right {
+  position: absolute;
+  top: 50%;
+  right: 60px;
+  transform: translateY(-50%);
+  width: 150px;
+  height: 40px;
+  border-radius: 50px;
+  background-color: #fff;
+}
+
+.nav-right .nav-avatar {
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  background-color: green;
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-right .nav-right-button {
+  position: absolute;
+  left: 2px;
+  border-radius: 50px;
+  top: 50%;
+  width: 100px;
+  transform: translateY(-50%);
+}
