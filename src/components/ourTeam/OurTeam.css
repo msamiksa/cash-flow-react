@@ -1,0 +1,27 @@
+.our-teams-container {
+  width: 100%;
+  height: 80vh;
+  background-color: white;
+}
+
+.our-team-sub {
+  padding-top: 10vh;
+  height: 80vh;
+  width: 100%;
+}
+
+.our-team-sub .our-team-heading {
+  font-size: 2.2em;
+  color: #3e4e4d;
+  font-family: Roboto;
+  font-weight: 1000;
+  text-shadow: 2px 2px 5px #efeff5;
+}
+
+.our-team-sub .team-photos {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15vh;
+}
