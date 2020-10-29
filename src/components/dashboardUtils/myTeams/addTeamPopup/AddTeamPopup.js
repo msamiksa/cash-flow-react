@@ -10,7 +10,6 @@ import {
 
 const AddTeamPopup = (props) => {
   const [addTeam, setAddTeam] = React.useState(true);
-// const join = (props) => {
   const [formData, setFormData] = React.useState({
     // teamId: "1234567",
     // password: "123456",
@@ -23,13 +22,9 @@ const AddTeamPopup = (props) => {
   const onChangePassword = (e) => {
     setFormData({ ...formData, secret: e.target.value });
   };
-  // const onChangeUserId = (e) => {
-  //   setFormData({ ...formData, userid: e.target.value });
-  // };
   const onChangeTeamName = (e) => {
     setFormData({ ...formData, name: e.target.value });
   };
-  // setFormData({ ...formData, userid: window.localStorage.getItem("userId")});
   const joinClick = () => {
     axios
       .post(
@@ -111,17 +106,6 @@ const AddTeamPopup = (props) => {
             value={formData.teamname}
             onChange={onChangeTeamName}
           />
-           {/* <div style={{ marginTop: "20px" }}>
-          <TextField
-            id="outlined-user-id"
-            label="userid"
-            type="userid"
-            autoComplete="userid"
-            variant="outlined"
-            value={formData.userid}
-            onChange={onChangeUserId}
-          />
-        </div> */}
         </div>
         <Button
           variant="contained"
@@ -180,17 +164,6 @@ const AddTeamPopup = (props) => {
             onChange={onChangePassword}
           />
         </div>
-        {/* <div style={{ marginTop: "20px" }}>
-          <TextField
-            id="outlined-user-id"
-            label="userid"
-            type="userid"
-            autoComplete="userid"
-            variant="outlined"
-            value={formData.userid}
-            onChange={onChangeUserId}
-          />
-        </div> */}
         <Button
           variant="contained"
           style={{ backgroundColor: "#2a75ff", marginTop: "20px" }}
