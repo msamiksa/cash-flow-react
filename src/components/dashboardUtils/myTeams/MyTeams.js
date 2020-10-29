@@ -30,6 +30,7 @@ const MyTeams = (props) => {
   const [showCard, setShowCard] = React.useState(false);
   const [teams, setTeams]=React.useState([]);
   const [email, setemail]=React.useState("");
+  const [name, setname]=React.useState("");
  
   const handleAddCard = () => {
     setShowCard(!showCard);
@@ -37,6 +38,8 @@ const MyTeams = (props) => {
 
   useEffect(() => {
     setemail(window.localStorage.getItem("emailid"));
+    setname(window.localStorage.getItem("name"));
+    console.log(name);
     axios
       .get("http://localhost:3001/api/users/getUsers", {
         withCredentials: true,
@@ -77,6 +80,7 @@ const MyTeams = (props) => {
         <div>
           <MyInformation
             email={email}
+            name={name}
           ></MyInformation>
         </div>
       </div>

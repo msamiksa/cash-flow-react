@@ -39,6 +39,7 @@ const SignIn = (props) => {
         localStorage.setItem('loggedIn', true);
         localStorage.setItem('userId', res.data.userId);
         localStorage.setItem('emailid', res.data.email);
+        localStorage.setItem('name', res.data.username);
         // window.alert("Logged in successfully");
         setLoginSuccess(true)
         props.setShowSignIn(false)
