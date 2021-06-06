@@ -6,24 +6,47 @@ import AddTransaction from "../../components/dashboardUtils/AddTransaction";
 import Teaminfo from "../../components/dashboardUtils/teamsss/Teaminfo";
 import "./DashboardTransactions.css";
 import axios from "axios";
-import Axios from "axios";
+import url from "../../constants/url";
 const DashboardTransactions = (props) => {
   const [currentTab, setCurrentTab] = React.useState("transactions");
-  // useEffect(() => {
-  //   Axios.get(props.match.params.id)
-    
-  // })  
+  const [transactions, setTransactions]=React.useState([]);
+  const [teamId, setTeamId]=React.useState("");
+  const [secret, setSecret]=React.useState("");
+  const [users, setUsers]=React.useState([]);
+  useEffect(() => {
+    // Axios.post(props.match.params.id)
+    // console.log( window.location.pathname.split("/"));
+    const teamid=window.location.pathname.split("/")[2];
+    axios
+    .post(
+      url+"/api/teams/getTeam",
+      { teamid, },
+      {
+        withCredentials: true,
+      }
+    ).then(res=>{
+      console.log(res.data);
+      setTransactions(res.data.transactions);
+      setTeamId(res.data.teamId);
+      setSecret(res.data.secret);
+      setUsers(res.data.users);
+    })
+
+   
+  },[])  
+
   const renderTransactionsTabContent = () => {
     switch (currentTab) {
       case "transactions":
-        return [0, 0].map((item) => {
-          // console.log(props.match.params.id);
-          return <Transaction></Transaction>;
+        return transactions.map((item) => {
+          console.log(item);
+          return <Transaction data={item}></Transaction>;
         });
       case "teaminfo":
-        return <Teaminfo></Teaminfo>
+        return <Teaminfo data1={teamId} data2={secret}></Teaminfo>
       case "add":
-        return <AddTransaction></AddTransaction>;
+        console.log(users)
+        return <AddTransaction data={users}></AddTransaction>;
       default:
         return <p>Something is not right!</p>;
     }
@@ -41,7 +64,9 @@ const DashboardTransactions = (props) => {
           {renderTransactionsTabContent()}
         </div>
         <div className="users">
-          <div className="user">
+        {users.map((item) => {
+            return(
+            <div className="user">
             <div className="user-avatar-container">
               <div
                 className="user-avatar"
@@ -55,11 +80,12 @@ const DashboardTransactions = (props) => {
               ></div>
             </div>
             <div className="user-name-email">
-              <h5>Samiksa</h5>
-              <p>samiksa@gmail.com</p>
+              <h5>{item.username}</h5>
+              <p>{item.email}</p>
             </div>
-          </div>
-          <div className="user">
+          </div>);
+          })}
+          {/* <div className="user">
             <div className="user-avatar-container">
               <div
                 className="user-avatar"
@@ -76,7 +102,7 @@ const DashboardTransactions = (props) => {
               <h5>Ishika</h5>
               <p>ishika@gmail.com</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

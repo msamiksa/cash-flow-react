@@ -1,51 +1,41 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import ListMembers from './ListMemberAddTrans'
 import Button from '@material-ui/core/Button'
 import axios from "axios";
-// const splitTypes = [
-//     {
-//       value: 'SEIM',
-//       label: 'Split equally including me',
-//     },
-//     {
-//       value: 'DEEM',
-//       label: 'Split equally excluding me',
-//     },
-//     {
-//       value: 'SWIM',
-//       label: 'Split with * including me',
-//     },
-//     {
-//       value: 'SWEM',
-//       label: 'Split with * excluting me',
-//     },
-//   ];
+import url from '../../constants/url';
+
 const AddTransactions = (props) =>{
-    // const [type, setType] = React.useState('SEIM');
-    // const [selectedMembers,setSelectedMembers] = React.useState({'Samiksa':false,'Shatakshi':false,'Ishika':false});
-    // const handleChange = (event) => {
-    //     setType(event.target.value);
-    // };
-    const [addT, setAddT] = React.useState(true);
     const [formData, setFormData] = React.useState({});
     const [addSuccess,setAddSuccess] = React.useState(false)
-    const [teamid,setTeamId]=React.useState(77848170)
-  const onChangePaidby = (e) => {
-    setFormData({ ...formData, paidby: e.target.value });
-  };
+    const [user, setUser]=React.useState([]);
+    const [teamid,setTeamId]=React.useState(window.location.pathname.split("/")[2])
   const onChangePaidTo = (e) => {
-    setFormData({ ...formData, paidto: e.target.value });
+    setFormData({ ...formData, to: e.target.value });
   };
   const onChangeAmount = (e) => {
     setFormData({ ...formData, amount: e.target.value });
   };
+  const onChangeDescription = (e) => {
+    setFormData({ ...formData, description: e.target.value });
+    
+  };
+  
+    useEffect(() => {
+      let temp=props.data.filter(item=>
+        {
+          return item._id!==window.localStorage.getItem("userId");
+        }
+        )
+        console.log(temp);
+        setUser(temp);
+    }, []);
+  console.log(props.data);
   const add = () => {
     axios
       .post(
-        "http://localhost:3001/api/transactions/addTransactions",
-        { ...formData, teamid, userid: window.localStorage.getItem("userId")},
+        `${url}/api/transactions/addTransactions`,
+        { ...formData, id: teamid, from: window.localStorage.getItem("name")},
         {
           withCredentials: true,
         }
@@ -67,7 +57,7 @@ const AddTransactions = (props) =>{
         <div className="add-transaction">
             <h1>Add transaction</h1>
             <div className="add-trans-form">
-                <TextField 
+                {/* <TextField 
                 id="paid-by" 
                 className="at-input" 
                 label="Paid By" 
@@ -75,8 +65,21 @@ const AddTransactions = (props) =>{
                 variant="outlined"
                 value={formData.paidby}
                 onChange={onChangePaidby}
-                />
-                <TextField 
+                /> */}
+                <TextField
+                    id="paid-to"
+                    className="at-input"
+                    select
+                    onChange={onChangePaidTo}
+                    helperText="Select the user to be paid to"
+                    >
+                    {user.map((option) => (
+                        <MenuItem key={option.username} value={option.username}>
+                        {option.username}
+                        </MenuItem>
+                    ))}
+                </TextField>
+                {/* <TextField 
                 id="paid-to" 
                 className="at-input" 
                 label="Paid To" 
@@ -84,7 +87,7 @@ const AddTransactions = (props) =>{
                 variant="outlined"
                 value={formData.paidto}
                 onChange={onChangePaidTo}
-                />
+                /> */}
                 <TextField 
                 id="paid-amount" 
                 className="at-input" 
@@ -94,21 +97,17 @@ const AddTransactions = (props) =>{
                 value={formData.amount}
                 onChange={onChangeAmount}
                 /><br/>
-                {/* <TextField
-                    id="split-type"
-                    className="at-input"
-                    select
-                    value={type}
-                    onChange={handleChange}
-                    helperText="Please select the split type"
-                    >
-                    {splitTypes.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                        </MenuItem>
-                    ))}
-                </TextField>
-                {type==="SWIM"||type==="SWEM"?
+                 <TextField 
+                id="description" 
+                className="at-input" 
+                label="Description..." 
+                type="text"
+                variant="outlined"
+                value={formData.description}
+                onChange={onChangeDescription}
+                />
+                
+                {/* {type==="SWIM"||type==="SWEM"?
                     <ListMembers 
                         selectedMembers = {selectedMembers} 
                         setSelectedMembers={setSelectedMembers}>

@@ -2,29 +2,18 @@ import React from 'react'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button'
 import CloseIcon from '@material-ui/icons/Close';
-// import { useHistory } from "react-router-dom";
 import './SignUp.css'
 import illus from '../../assets/illus-2.svg'
 import axios from "axios";
-import {
-  Redirect,
-} from "react-router-dom";
+import url from '../../constants/url';
 const SignUp = (props) =>{
-    // let history = useHistory();
     const [formData, setFormData] = React.useState({
-        // username: "Samiksa",
-        // email: "samiksa@gmail.com",
-        // password: "samiksa@1",
       });
       const [loginSuccess,setLoginSuccess] = React.useState(false)
     const goToSignIn = () =>{
         props.setShowSignUp(false)
         props.setShowSignIn(true)
     }
-
-    // const signUp = () =>{
-    //     // history.push('/signup')
-    // }
       const onChangeEmail = (e) => {
         setFormData({ ...formData, email: e.target.value });
       };
@@ -37,7 +26,7 @@ const SignUp = (props) =>{
       const signUpClick = () => {
         axios
           .post(
-            "http://localhost:3001/api/users/signup",
+            `${url}/api/users/signup`,
             { ...formData },
             {
               withCredentials: true,
@@ -46,15 +35,17 @@ const SignUp = (props) =>{
           .then((res) => {
             console.log(res.data);
             localStorage.setItem('loggedIn', true);
+            localStorage.setItem('userId', res.data.id);
+            localStorage.setItem('emailid', res.data.email);
+            localStorage.setItem('name', res.data.name);
             setLoginSuccess(true)
             props.setShowSignIn(false)
             props.setShowSignUp(false)
           })
           .catch((e) => {
-            // console.log(e);
             window.alert("Email exists");
           });
-        // axios.get('http://localhost:3000/api/users/logout').then((res)=>{
+        // axios.get(url+'/api/users/logout').then((res)=>{
         //     console.log(res.data)
         // }).catch(e=>{
         //     console.log(e)

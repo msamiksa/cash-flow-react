@@ -4,16 +4,11 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CloseIcon from "@material-ui/icons/Close";
 import axios from "axios";
-import {
-  Redirect,
-} from "react-router-dom";
+import url from "../../../../constants/url";
 
 const AddTeamPopup = (props) => {
   const [addTeam, setAddTeam] = React.useState(true);
-  const [formData, setFormData] = React.useState({
-    // teamId: "1234567",
-    // password: "123456",
-  });
+  const [formData, setFormData] = React.useState({});
   const [joinSuccess,setJoinSuccess] = React.useState(false)
   const [createSuccess,setCreateSuccess] = React.useState(false)
   const onChangeTeamId = (e) => {
@@ -28,7 +23,7 @@ const AddTeamPopup = (props) => {
   const joinClick = () => {
     axios
       .post(
-        "http://localhost:3001/api/teams/joinTeam",
+        `${url}/api/teams/joinTeam`,
         { ...formData, userid: window.localStorage.getItem("userId")},
         {
           withCredentials: true,
@@ -37,11 +32,9 @@ const AddTeamPopup = (props) => {
       .then((res) => {
         console.log(res.data);
         localStorage.setItem('joinedIn', true);
-        // window.alert("Joined successfully");
         setJoinSuccess(true)
         props.setShowCard(false)
         window.location.reload();
-        // props.setShowSignUp(false)
       })
       .catch((e) => {
         console.log(e);
@@ -52,7 +45,7 @@ const AddTeamPopup = (props) => {
     console.log(formData);
     axios
       .post(
-        "http://localhost:3001/api/teams/create",
+        `${url}/api/teams/create`,
         { ...formData, userid: window.localStorage.getItem("userId") },
         {
           withCredentials: true,
@@ -157,7 +150,7 @@ const AddTeamPopup = (props) => {
         <div style={{ marginTop: "20px" }}>
           <TextField
             id="outlined-password-input"
-            label="Password"
+            label="Code"
             type="text"
             variant="outlined"
             value={formData.password}

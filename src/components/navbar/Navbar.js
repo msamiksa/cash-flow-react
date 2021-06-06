@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import Button from "@material-ui/core/Button";
 import Axios from "axios";
+import url from "../../constants/url";
 
 const Navbar = (props) => {
   const [disabledButton, setDisabledButton] = React.useState("Home");
@@ -35,7 +36,7 @@ const Navbar = (props) => {
   }, [scrollState]);
 
   const logoutHandler = () =>{
-    Axios.get("http://localhost:3001/api/users/logout",{
+    Axios.get(url+"/api/users/logout",{
       withCredentials: true,
     }).then((data)=>{
       localStorage.removeItem("loggedIn")

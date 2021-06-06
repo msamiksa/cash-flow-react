@@ -6,26 +6,8 @@ import AddTeamPopup from "../myTeams/addTeamPopup/AddTeamPopup";
 import axios from "axios";
 import "./MyTeams.css";
 import {Link} from 'react-router-dom'
-import { DesktopWindows } from "@material-ui/icons";
+import url from "../../../constants/url";
 
-// const teams = [
-//   {
-//     id: "12355",
-//     name: "First Team",
-//   },
-//   {
-//     id: "1235456",
-//     name: "Second Team",
-//   },
-//   {
-//     id: "3214",
-//     name: "Bangalore trip",
-//   },
-//   {
-//     id: "12343",
-//     name: "Roommates",
-//   },
-// ];
 const MyTeams = (props) => {
   const [showCard, setShowCard] = React.useState(false);
   const [teams, setTeams]=React.useState([]);
@@ -41,7 +23,7 @@ const MyTeams = (props) => {
     setname(window.localStorage.getItem("name"));
     console.log(name);
     axios
-      .get("http://localhost:3001/api/users/getUsers", {
+      .get(`${url}/api/users/getUsers`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -49,7 +31,7 @@ const MyTeams = (props) => {
         const teams1=res.data;
         let temp=teams1.filter(item=>
         {
-          return item._id==window.localStorage.getItem("userId");
+          return item._id===window.localStorage.getItem("userId");
         }
         )
       console.log(temp[0]);

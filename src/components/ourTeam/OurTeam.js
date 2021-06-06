@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "../../components/teamsCard/TeamsCard";
 import "./OurTeam.css";
-import Samiksa from "../../assets/Samiksa.jpeg";
+import Samiksa from "../../assets/samiksa1.jpeg";
 
 const OurTeam = () => {
   return (

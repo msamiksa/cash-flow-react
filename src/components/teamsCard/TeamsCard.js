@@ -22,7 +22,7 @@ const TeamsCard = (props) => {
           ></img>
         </div>
         <div className="our-team-image">
-          <img src={props.image} alt="team"></img>
+          <img src={props.image} alt="team" style={{marginTop: "85px"}}></img>
         </div>
       </div>
     </>

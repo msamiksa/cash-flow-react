@@ -45,7 +45,7 @@ function App() {
           <Route path="/dashboard">
             <Dashboard loggedIn={loggedIn}></Dashboard>
           </Route>
-          <Route path="/transactions">
+          <Route path="/transactions/:teamid">
             <DashboardTransactions></DashboardTransactions>
           </Route>
           <Route path='/about'>

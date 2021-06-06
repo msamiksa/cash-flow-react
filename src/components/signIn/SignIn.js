@@ -8,6 +8,7 @@ import axios from "axios";
 import {
   Redirect,
 } from "react-router-dom";
+import url from "../../constants/url";
 
 const SignIn = (props) => {
   const [formData, setFormData] = React.useState({
@@ -28,7 +29,7 @@ const SignIn = (props) => {
   const loginClick = () => {
     axios
       .post(
-        "http://localhost:3001/api/users/login",
+        url+"/api/users/login",
         { ...formData },
         {
           withCredentials: true,
@@ -39,7 +40,8 @@ const SignIn = (props) => {
         localStorage.setItem('loggedIn', true);
         localStorage.setItem('userId', res.data.userId);
         localStorage.setItem('emailid', res.data.email);
-        localStorage.setItem('name', res.data.username);
+        localStorage.setItem('name', res.data.name);
+        console.log(res.data.name);
         // window.alert("Logged in successfully");
         setLoginSuccess(true)
         props.setShowSignIn(false)
@@ -49,7 +51,7 @@ const SignIn = (props) => {
         console.log(e);
         window.alert("Wrong email/password combination");
       });
-    // axios.get('http://localhost:3000/api/users/logout').then((res)=>{
+    // axios.get(url+'/api/users/logout').then((res)=>{
     //     console.log(res.data)
     // }).catch(e=>{
     //     console.log(e)
