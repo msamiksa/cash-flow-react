@@ -30,19 +30,16 @@ const AddTeamPopup = (props) => {
         }
       )
       .then((res) => {
-        console.log(res.data);
         localStorage.setItem('joinedIn', true);
         setJoinSuccess(true)
         props.setShowCard(false)
         window.location.reload();
       })
       .catch((e) => {
-        console.log(e);
         window.alert("Wrong teamid/password combination");
       });
   }
   const createClick = () => {
-    console.log(formData);
     axios
       .post(
         `${url}/api/teams/create`,
@@ -52,7 +49,6 @@ const AddTeamPopup = (props) => {
         }
       )
       .then((res) => {
-        console.log(res.data);
         localStorage.setItem('created', true);
         // window.alert("Created successfully");
         setCreateSuccess(true)
@@ -61,7 +57,6 @@ const AddTeamPopup = (props) => {
         // props.setShowSignUp(false)
       })
       .catch((e) => {
-        console.log(e);
         window.alert("Error in creation");
       });
   }

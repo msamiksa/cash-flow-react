@@ -36,19 +36,16 @@ const SignIn = (props) => {
         }
       )
       .then((res) => {
-        console.log(res.data);
         localStorage.setItem('loggedIn', true);
         localStorage.setItem('userId', res.data.userId);
         localStorage.setItem('emailid', res.data.email);
         localStorage.setItem('name', res.data.name);
-        console.log(res.data.name);
         // window.alert("Logged in successfully");
         setLoginSuccess(true)
         props.setShowSignIn(false)
         props.setShowSignUp(false)
       })
       .catch((e) => {
-        console.log(e);
         window.alert("Wrong email/password combination");
       });
     // axios.get(url+'/api/users/logout').then((res)=>{

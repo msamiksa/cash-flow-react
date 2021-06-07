@@ -27,10 +27,8 @@ const AddTransactions = (props) =>{
           return item._id!==window.localStorage.getItem("userId");
         }
         )
-        console.log(temp);
         setUser(temp);
     }, []);
-  console.log(props.data);
   const add = () => {
     axios
       .post(
@@ -41,7 +39,6 @@ const AddTransactions = (props) =>{
         }
       )
       .then((res) => {
-        console.log(res.data);
         // window.alert("Added successfully");
         setAddSuccess(true)
         // props.setShowCard(false)
@@ -49,7 +46,6 @@ const AddTransactions = (props) =>{
         // props.setShowSignUp(false)
       })
       .catch((e) => {
-        console.log(e);
         window.alert("Wrong info");
       });
   }

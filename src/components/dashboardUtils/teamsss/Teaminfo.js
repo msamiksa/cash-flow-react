@@ -2,7 +2,6 @@ import React from 'react'
 import TeamInformation from "../teamsss/aaaa/TeamInformation";
 
 const Teaminfo = (props) =>{
-  console.log(props.data1);
     return(
         <>
         <TeamInformation

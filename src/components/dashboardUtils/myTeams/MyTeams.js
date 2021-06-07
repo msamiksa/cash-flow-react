@@ -21,26 +21,21 @@ const MyTeams = (props) => {
   useEffect(() => {
     setemail(window.localStorage.getItem("emailid"));
     setname(window.localStorage.getItem("name"));
-    console.log(name);
     axios
       .get(`${url}/api/users/getUsers`, {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res);
         const teams1=res.data;
         let temp=teams1.filter(item=>
         {
           return item._id===window.localStorage.getItem("userId");
         }
         )
-      console.log(temp[0]);
         const teams2=temp[0].teams;
-        console.log(teams2);
         setTeams(teams2);
        })
       .catch((err) => {
-        console.log(err);
       });
   }, []);
   return (

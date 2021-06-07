@@ -42,9 +42,8 @@ const Navbar = (props) => {
       localStorage.removeItem("loggedIn")
       window.localStorage.clear();
       props.setLoggedIn(false)
-      console.log(data)
     }).catch((e)=>{
-      console.log(e)
+      window.alert("Logout unsuccessful");
     })
   }
 

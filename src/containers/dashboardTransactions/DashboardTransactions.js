@@ -25,7 +25,6 @@ const DashboardTransactions = (props) => {
         withCredentials: true,
       }
     ).then(res=>{
-      console.log(res.data);
       setTransactions(res.data.transactions);
       setTeamId(res.data.teamId);
       setSecret(res.data.secret);
@@ -39,13 +38,11 @@ const DashboardTransactions = (props) => {
     switch (currentTab) {
       case "transactions":
         return transactions.map((item) => {
-          console.log(item);
           return <Transaction data={item}></Transaction>;
         });
       case "teaminfo":
         return <Teaminfo data1={teamId} data2={secret}></Teaminfo>
       case "add":
-        console.log(users)
         return <AddTransaction data={users}></AddTransaction>;
       default:
         return <p>Something is not right!</p>;

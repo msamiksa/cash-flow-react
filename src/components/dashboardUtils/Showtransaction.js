@@ -1,7 +1,6 @@
 import React from 'react'
 import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
 const Transaction = (props) =>{
-    console.log(props.data);
     const timestamp = props.data._id.toString().substring(0,8)
     const date = new Date( parseInt( timestamp, 16 ) * 1000 )
     return(

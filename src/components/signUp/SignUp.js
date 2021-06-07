@@ -33,7 +33,6 @@ const SignUp = (props) =>{
             }
           )
           .then((res) => {
-            console.log(res.data);
             localStorage.setItem('loggedIn', true);
             localStorage.setItem('userId', res.data.id);
             localStorage.setItem('emailid', res.data.email);
