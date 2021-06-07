@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-src/constants
+/src/constants/*
 /.pnp
 .pnp.js
 
