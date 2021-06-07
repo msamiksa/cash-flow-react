@@ -44,8 +44,8 @@ const MyTeams = (props) => {
       <div style={{ display: showCard ? "block" : "none" }}>
         <AddTeamPopup setShowCard={setShowCard}></AddTeamPopup>
       </div>
-      <div class="my-teams-container">
-        <div class="my-teams-container-container">
+      <div className="my-teams-container">
+        <div className="my-teams-container-container">
           <div onClick={handleAddCard}>
             <AddTeamCard></AddTeamCard>
           </div>
